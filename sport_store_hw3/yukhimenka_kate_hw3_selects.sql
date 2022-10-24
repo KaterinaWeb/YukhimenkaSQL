@@ -16,6 +16,21 @@ ON pr.category_id=cat.id_category)
 
  SELECT * FROM t1  WHERE price=max_price;
 
+ -- через rank
+ WITH t1 AS 
+ (SELECT customer_id, concat(c.first_name, ' ', c.last_name) AS customer_name, 
+ product_id, pr_category, price,  
+max(price) OVER (PARTITION BY customer_id) as max_price, 
+dense_rank() over (partition by customer_id order by price desc) as price_rank
+FROM orders o 
+JOIN product pr 
+ON pr.id_product=o.product_id
+JOIN customer c 
+ON c.id_customer=o.customer_id
+JOIN category cat
+ON pr.category_id=cat.id_category)
+select * from t1 where price_rank=1;
+
 --2. Сумма всех покупок каждого покупателя
 SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer_name, 
 SUM(price) AS invoice
