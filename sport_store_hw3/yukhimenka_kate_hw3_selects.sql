@@ -21,7 +21,7 @@ ON pr.category_id=cat.id_category)
  (SELECT customer_id, concat(c.first_name, ' ', c.last_name) AS customer_name, 
  product_id, pr_category, price,  
 max(price) OVER (PARTITION BY customer_id) as max_price, 
-dense_rank() over (partition by customer_id order by price desc) as price_rank
+dense_rank() OVER (PARTITION BY customer_id ORDER BY price DESC) AS price_rank
 FROM orders o 
 JOIN product pr 
 ON pr.id_product=o.product_id
@@ -29,7 +29,7 @@ JOIN customer c
 ON c.id_customer=o.customer_id
 JOIN category cat
 ON pr.category_id=cat.id_category)
-select * from t1 where price_rank=1;
+SELECT * FROM t1 WHERE price_rank=1;
 
 --2. Сумма всех покупок каждого покупателя
 SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer_name, 
@@ -123,8 +123,12 @@ WHERE id_order IS NULL;
 (и имя товара тоже вывести) в ней, но только для тех, 
 где самый дорогой товар дороже 1000. */
 
-SELECT pr_category, MAX(price) FROM product pr
+WITH t1 AS 
+(SELECT pr_category, id_product, price,
+ max(price) OVER (PARTITION BY pr_category) AS max_price, 
+dense_rank() OVER (PARTITION BY pr_category ORDER BY price DESC) AS price_rank
+FROM product pr
 JOIN category cat 
-ON pr.category_id=cat.id_category
-GROUP BY category_id
-HAVING MAX(price)>1000;
+ON pr.category_id=cat.id_category)
+
+SELECT * FROM t1 WHERE price_rank=1 AND price>1000;
