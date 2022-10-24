@@ -1,15 +1,20 @@
 
 -- 1.Самый дорогой товар, который купил каждый покупатель 
 
--- Без наименования товара
-SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer_name, 
-MAX(PRICE) AS highest_price from product pr
-join orders o
-on pr.id_product=o.product_id
+WITH t1 AS 
+(SELECT customer_id, 
+concat(c.first_name, ' ', c.last_name) AS customer_name,
+product_id, pr_category, price,  
+max(price) OVER (PARTITION BY customer_id) as max_price 
+FROM orders o 
+JOIN product pr 
+ON pr.id_product=o.product_id
 JOIN customer c 
 ON c.id_customer=o.customer_id
-GROUP BY customer_id
-order by customer_id;
+JOIN category cat
+ON pr.category_id=cat.id_category) 
+
+ SELECT * FROM t1  WHERE price=max_price;
 
 --2. Сумма всех покупок каждого покупателя
 SELECT CONCAT(c.first_name, ' ', c.last_name) AS customer_name, 
