@@ -5,7 +5,8 @@ CREATE TABLE authors(
 id_author INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 first_name VARCHAR(20) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
-UNIQUE(first_name, last_name));
+UNIQUE(first_name, last_name),
+INDEX author_last_name (last_name));
 
 CREATE TABLE books(
 id_book INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +16,8 @@ ISBN_13 VARCHAR(20) UNIQUE NOT NULL,
 year_of_issue YEAR,
 price DEC(10,2) NOT NULL,
 CHECK(ISBN_13 RLIKE '[0-9]+[-]+[0-9]'),
-FOREIGN KEY (author_id) REFERENCES authors(id_author));
+FOREIGN KEY (author_id) REFERENCES authors(id_author),
+INDEX book_title (title));
 
 CREATE TABLE book_genre(
 id_genre INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

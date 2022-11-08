@@ -31,3 +31,32 @@ END $$
 DELIMITER ;
 
 CALL get_bill('041122-3');
+
+-- Запросы на проверку работы индексов
+
+EXPLAIN 
+SELECT b.title, a.first_name, a.last_name, 
+bg.genre, p.pub_house, b.ISBN_13, b.year_of_issue, b.price 
+FROM additional_information ai
+JOIN books b
+ON ai.book_id=b.id_book
+JOIN book_genre bg
+ON ai.genre_id=bg.id_genre
+JOIN publishers p
+ON ai.publish_id=p.id_publish
+JOIN book_format bf
+ON ai.format_id=bf.id_format
+JOIN authors a
+ON b.author_id=a.id_author
+WHERE b.title='Moby-Dick';
+
+EXPLAIN
+SELECT b.title, a.first_name, a.last_name, sh.shop_address, sh.shop_phone
+FROM shop_has_book shb
+JOIN books b
+ON shb.book_id=b.id_book
+JOIN authors a
+ON b.author_id=a.id_author
+JOIN shops sh
+ON shb.shop_id=sh.id_shop
+WHERE a.last_name='Fitzgerald';
