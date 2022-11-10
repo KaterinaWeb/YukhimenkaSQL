@@ -1,4 +1,4 @@
-INSERT INTO authors (first_name, last_name) VALUES 
+INSERT INTO author (first_name, last_name) VALUES 
 ('Vladimir', 'Nabokov'),
 ('F.Scott', 'Fitzgerald'),
 ('Gabriel', 'Garcia Marquez'),
@@ -20,7 +20,7 @@ INSERT INTO authors (first_name, last_name) VALUES
 ('Harper', 'Lee'),
 ('Jonathan', 'Swift');
 
-INSERT INTO books (title, author_id, ISBN_13, year_of_issue, price) VALUES
+INSERT INTO book (title, author_id, ISBN_13, year_of_issue, price) VALUES
 ('Lolita', 1, '978-0679723165', 1989, 5.49),
 ('The Great Gatsby', 2, '978-0743273565',2004, 5.22),
 ('One Hundred Years of Solitude', 3, '978-0060531041', 2006, 16.83),
@@ -44,6 +44,18 @@ INSERT INTO books (title, author_id, ISBN_13, year_of_issue, price) VALUES
 ('To Kill a Mockingbird', 19, '978-0446310789', 1988, 12.01),
 ('Gulliver''s Travels', 20, '978-0486292731', 1996, 2.95);
 
+INSERT INTO book_format(b_format) VALUES
+('hardcover'),
+('paperback'),
+('audiobook'),
+('Ebook');
+
+INSERT INTO book_has_format(book_id, format_id) VALUES
+(1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 1), (5, 1), (6, 1), (6, 3), (6, 4), (6, 2), (7, 2), (7, 3),
+(8, 2), (8, 3), (8, 4), (8, 1), (2, 3), (9, 1), (10, 2), (10, 3), (10, 4), (10, 1), (11, 1), (12, 1),
+(13, 2), (14, 2), (14, 1), (15, 2), (15, 1), (15, 4), (16, 1), (17, 2), (18, 2), (18, 3), (18, 1), 
+(19, 1), (19, 3), (20, 1), (21, 1), (21, 2), (21, 3), (21, 4), (22, 2), (22, 4);
+
 INSERT INTO book_genre(genre) VALUES
 ('Literary Fiction'),
 ('Tragedy'),
@@ -60,13 +72,7 @@ INSERT INTO book_genre(genre) VALUES
 ('Magical Realism'),
 ('Realist Literature');
 
-INSERT INTO book_format(b_format) VALUES
-('hardcover'),
-('paperback'),
-('audiobook'),
-('Ebook');
-
-INSERT INTO publishers(pub_house, pub_address, pub_phone, contact_person) VALUES
+INSERT INTO publisher(pub_house, pub_address, pub_phone, contact_person) VALUES
 ('Harper Perennial Modern Classics', '195 Broadway, NY 10007', '+1 212-746-5400', 'Windy'),
 ('Scribner', '154 South Victory Blvd. Burbank, CA', '+1 212-312-5000', 'Starlette Pitt'),
 ('Knopf Doubleday Publishing Group', '1745 Broadway, New York, 10019', NULL, NULL),
@@ -80,32 +86,32 @@ INSERT INTO publishers(pub_house, pub_address, pub_phone, contact_person) VALUES
 ('Signet Classic', NULL, '+1 646-929-7800', 'Abrielle'),
 ('Grand Central Publishing', '1290 Avenue of the Americas New York, NY 10104', '+1 626-397-5000', 'Dara Smith');
 
-INSERT INTO additional_information(book_id, genre_id, publish_id, format_id, page_num, staff_comment)
+INSERT INTO additional_information(book_id, genre_id, publish_id, page_num, staff_comment)
 VALUES
-(1, 1, 3, 1, 345, NULL),
-(2, 1, 2, 1, 423, NULL),
-(3, 1, 1, 1, 242, 'big size'),
-(4, 1, 5, 3, 211, NULL),
-(5, 14, 4, 4, 478, 'booked'),
-(6, 1, 4, 1, 943, NULL),
-(7, 7, 5, 2, 367, NULL),
-(8, 14, 7, 2, 98, 'booked'),
-(9, 6, 5, 3, 186, NULL),
-(10, 1, 5, 2, 372, NULL),
-(11, 8, 8, 4, 374, 'russian language'),
-(12, 3, 5, 3, 544, NULL),
-(13, 6, 5, 1, 415, NULL),
-(14, 2, 9, 1, 186, NULL),
-(15, 2, 9, 1, 49, NULL),
-(16, 1, 2, 1, 349, 'Collector''s Edition'),
-(17, 6, 4, 2, 310, NULL),
-(18, 1, 10, 2, 153, NULL),
-(19, 11, 8, 2, 194, NULL),
-(20, 12, 11, 4, 304, NULL),
-(21, 1, 12, 2, 309, 'Collector''s Edition'),
-(22, 1, 8, 1, 282, NULL);
+(1, 1, 3, 345, NULL),
+(2, 1, 2, 423, NULL),
+(3, 1, 1, 242, 'big size'),
+(4, 1, 5, 211, NULL),
+(5, 14, 4, 478, 'booked'),
+(6, 1, 4, 943, NULL),
+(7, 7, 5, 367, NULL),
+(8, 14, 7, 98, 'booked'),
+(9, 6, 5, 186, NULL),
+(10, 1, 5, 372, NULL),
+(11, 8, 8, 374, 'russian language'),
+(12, 3, 5, 544, NULL),
+(13, 6, 5, 415, NULL),
+(14, 2, 9, 186, NULL),
+(15, 2, 9, 49, NULL),
+(16, 1, 2, 349, 'Сollectible Edition'),
+(17, 6, 4, 310, NULL),
+(18, 1, 10, 153, NULL),
+(19, 11, 8, 194, NULL),
+(20, 12, 11, 304, NULL),
+(21, 1, 12, 309, 'Сollectible Edition'),
+(22, 1, 8, 282, NULL);
 
-INSERT INTO shops VALUES
+INSERT INTO shop VALUES
 (1, '3900 Hillsboro Pike #14, Nashville, TN 37215', '+1 555-929-7800'),
 (2, '453 South Spring Street Ground Floor, 121 E 5th St SUITE 505, Los Angeles, CA 90013', '+2 587-929-7800'),
 (3, '116 E 59th St, New York, NY 10022', '+1 555-000-7800'),
@@ -116,12 +122,12 @@ INSERT INTO shops VALUES
 (8, '1256 Massachusetts Ave, Cambridge, MA 02138', '+1 4859242800'),
 (9, '23654 US Hwy 19 N, Clearwater, FL 33765', '+1 3574584452'),
 (10, '695 E Colorado Blvd, Pasadena, CA 91101', '+1 577-946-2227'),
-(11, 'https://openlibrary.org/books/OL32784154M/To_the_Lighthouse', NULL),
-(12, 'https://openlibrary.org/books/OL32784154M/Anna_Karenina', NULL),
-(13, 'https://openlibrary.org/books/OL32784154M/Middlemarch', NULL),
-(14, 'https://openlibrary.org/books/OL32784154M/Great_Expectations', NULL),
-(15, 'https://openlibrary.org/books/OL32784154M/Crime_and_Punishment', NULL),
-(16, 'https://openlibrary.org/books/OL32784154M/Nineteen_Eighty_Four', NULL);
+(11, 'Carolina Shopping Center, 18030 US-281 #140, North Carolina, TX 78232', '+1 485946800'),
+(12, '390 Nashville Pike, Nashville, TN 34515', '+2 555-995-7800'),
+(13, 'Mayo Shopping Center - Rochester Rochester, MN', '+1 555-220-7823'),
+(14, '800 Brevard Road, Asheville, NC 28806', NULL),
+(15, '88-01 Queens Boulevard Elmhurst, NY 11373', '+1 206-000-7800'),
+(16, '16th Street Mall, Denver, CO 80265', NULL);
 
 INSERT INTO shop_has_book(book_id, shop_id) VALUES
 (1, 5), (2, 8), (3, 2), (3, 3), (3, 10), (4, 11), (5, 12), (6, 1), (6, 10), (6, 7), (6, 8), (7, 6), (7, 9),
@@ -129,7 +135,7 @@ INSERT INTO shop_has_book(book_id, shop_id) VALUES
 (13, 4), (14, 9), (14, 10), (15, 1), (15, 6), (15, 7), (16, NULL), (17, NULL), (18, 2), (18, 3), (18, 5), 
 (19, 9), (19, 8), (20, 16), (21, 1), (21, 4), (21, 5), (21, 6), (22, 8), (22, 10);
 
-INSERT INTO customers(first_name, last_name, c_phone, c_address) VALUES 
+INSERT INTO customer(first_name, last_name, c_phone, c_address) VALUES 
 ('Deborah', 'Nabokova', '+375295894411', 'Minsk, Turovskogo 18a, 128'),
 ('Gabriel', 'Fitch', '80295564123', 'Soligorsk, Stroiteley 31, 96'),
 ('Sharon', 'Grin', '(33)555-17-18', 'Smorgon, Yubileynaya 55, 49'),
@@ -153,84 +159,85 @@ INSERT INTO customers(first_name, last_name, c_phone, c_address) VALUES
 
 INSERT INTO orders (order_number, customer_id, book_id, price_of_book,
  amount_of_books) VALUES 
-('031122-1',1,2, (select price from books where id_book=2),1), 
-('031122-1',1,4, (select price from books where id_book=4),1), 
-('031122-1',1,8, (select price from books where id_book=8),1), 
-('031122-1',1,12,(select price from books where id_book=12),1), 
-('031122-1',1,18,(select price from books where id_book=18),1),
-('031122-1',1,22,(select price from books where id_book=22),1),
-('031122-2',2,2,(select price from books where id_book=2),1),
-('031122-2',2,5,(select price from books where id_book=5),1), 
-('031122-2',2,10,(select price from books where id_book=10),1), 
-('031122-2',2,21,(select price from books where id_book=21),1), 
-('031122-2',2,7,(select price from books where id_book=7),4), 
-('041122-1',3,1,(select price from books where id_book=1),1), 
-('041122-1',3,8,(select price from books where id_book=8),1), 
-('041122-1',3,9,(select price from books where id_book=9),1), 
-('041122-1',3,11,(select price from books where id_book=11),1), 
-('041122-1',3,17,(select price from books where id_book=17),2), 
-('041122-2',4,3,(select price from books where id_book=3),1), 
-('041122-2',4,6,(select price from books where id_book=6),1), 
-('041122-2',4,9,(select price from books where id_book=9),1), 
-('041122-2',4,12,(select price from books where id_book=12),1), 
-('041122-2',4,14,(select price from books where id_book=14),1), 
-('041122-2',4,18,(select price from books where id_book=18),1), 
-('041122-3',5,1,(select price from books where id_book=1),1), 
-('041122-3',5,22,(select price from books where id_book=22),2), 
-('041122-3',5,20,(select price from books where id_book=20),2), 
-('041122-3',5,8,(select price from books where id_book=8),10), 
-('041122-4',6,4,(select price from books where id_book=4),1), 
-('051122-1',7,7,(select price from books where id_book=7),1), 
-('051122-1',5,14,(select price from books where id_book=14),1), 
-('051122-1',5,21,(select price from books where id_book=21),1), 
-('051122-1',5,20,(select price from books where id_book=20),1), 
-('051122-2',8,5,(select price from books where id_book=5),1), 
-('051122-2',8,10,(select price from books where id_book=10),1), 
-('051122-2',8,15,(select price from books where id_book=15),1), 
-('051122-2',8,19,(select price from books where id_book=19),2), 
-('051122-3',9,4,(select price from books where id_book=4),1), 
-('051122-3',9,6,(select price from books where id_book=6),1), 
-('051122-3',9,9,(select price from books where id_book=9),1), 
-('051122-3',9,11,(select price from books where id_book=11),1), 
-('051122-3',9,13,(select price from books where id_book=13),1), 
-('051122-4',10,5,(select price from books where id_book=5),1), 
-('051122-4',10,7,(select price from books where id_book=7),1), 
-('051122-4',10,16,(select price from books where id_book=16),1), 
-('051122-4',10,17,(select price from books where id_book=17),1), 
-('051122-6',11,10,(select price from books where id_book=10),1), 
-('051122-6',11,12,(select price from books where id_book=12),1), 
-('051122-6',11,13,(select price from books where id_book=13),1), 
-('051122-6',11,19,(select price from books where id_book=19),2), 
-('051122-7',12,11,(select price from books where id_book=11),1), 
-('051122-7',12,15,(select price from books where id_book=15),1), 
-('051122-7',12,18,(select price from books where id_book=18),1),
-('051122-8',13,15,(select price from books where id_book=15),1),
-('061122-1',14,19,(select price from books where id_book=19),1),
-('061122-2',15,18,(select price from books where id_book=18),1), 
-('061122-2',15,19,(select price from books where id_book=19),3), 
-('061122-2',15,20,(select price from books where id_book=20),1), 
-('061122-2',15,21,(select price from books where id_book=21),1),
-('061122-3',16,11,(select price from books where id_book=11),1), 
-('061122-3',16,7,(select price from books where id_book=7),1), 
-('061122-3',16,8,(select price from books where id_book=8),1), 
-('061122-3',16,20,(select price from books where id_book=20),1), 
-('071122-1',17,19,(select price from books where id_book=19),1), 
-('071122-1',17,20,(select price from books where id_book=20),1),
- ('071122-1',17,22,(select price from books where id_book=22),1), 
-('071122-2',18,14,(select price from books where id_book=14),2), 
-('071122-3',19,10,(select price from books where id_book=10),1), 
-('071122-4',20,17,(select price from books where id_book=17),1), 
-('071122-4',20,19,(select price from books where id_book=19),1), 
-('071122-4',20,22,(select price from books where id_book=22),1);
+('031122-1',1,2, (select price from book where id_book=2),1), 
+('031122-1',1,4, (select price from book where id_book=4),1), 
+('031122-1',1,8, (select price from book where id_book=8),1), 
+('031122-1',1,12,(select price from book where id_book=12),1), 
+('031122-1',1,18,(select price from book where id_book=18),1),
+('031122-1',1,22,(select price from book where id_book=22),1),
+('031122-2',2,2,(select price from book where id_book=2),1),
+('031122-2',2,5,(select price from book where id_book=5),1), 
+('031122-2',2,10,(select price from book where id_book=10),1), 
+('031122-2',2,21,(select price from book where id_book=21),1), 
+('031122-2',2,7,(select price from book where id_book=7),4), 
+('041122-1',3,1,(select price from book where id_book=1),1), 
+('041122-1',3,8,(select price from book where id_book=8),1), 
+('041122-1',3,9,(select price from book where id_book=9),1), 
+('041122-1',3,11,(select price from book where id_book=11),1), 
+('041122-1',3,17,(select price from book where id_book=17),2), 
+('041122-2',4,3,(select price from book where id_book=3),1), 
+('041122-2',4,6,(select price from book where id_book=6),1), 
+('041122-2',4,9,(select price from book where id_book=9),1), 
+('041122-2',4,12,(select price from book where id_book=12),1), 
+('041122-2',4,14,(select price from book where id_book=14),1), 
+('041122-2',4,18,(select price from book where id_book=18),1), 
+('041122-3',5,1,(select price from book where id_book=1),1), 
+('041122-3',5,22,(select price from book where id_book=22),2), 
+('041122-3',5,20,(select price from book where id_book=20),2), 
+('041122-3',5,8,(select price from book where id_book=8),10), 
+('041122-4',6,4,(select price from book where id_book=4),1), 
+('051122-1',7,7,(select price from book where id_book=7),1), 
+('051122-1',5,14,(select price from book where id_book=14),1), 
+('051122-1',5,21,(select price from book where id_book=21),1), 
+('051122-1',5,20,(select price from book where id_book=20),1), 
+('051122-2',8,5,(select price from book where id_book=5),1), 
+('051122-2',8,10,(select price from book where id_book=10),1), 
+('051122-2',8,15,(select price from book where id_book=15),1), 
+('051122-2',8,19,(select price from book where id_book=19),2), 
+('051122-3',9,4,(select price from book where id_book=4),1), 
+('051122-3',9,6,(select price from book where id_book=6),1), 
+('051122-3',9,9,(select price from book where id_book=9),1), 
+('051122-3',9,11,(select price from book where id_book=11),1), 
+('051122-3',9,13,(select price from book where id_book=13),1), 
+('051122-4',10,5,(select price from book where id_book=5),1), 
+('051122-4',10,7,(select price from book where id_book=7),1), 
+('051122-4',10,16,(select price from book where id_book=16),1), 
+('051122-4',10,17,(select price from book where id_book=17),1), 
+('051122-6',11,10,(select price from book where id_book=10),1), 
+('051122-6',11,12,(select price from book where id_book=12),1), 
+('051122-6',11,13,(select price from book where id_book=13),1), 
+('051122-6',11,19,(select price from book where id_book=19),2), 
+('051122-7',12,11,(select price from book where id_book=11),1), 
+('051122-7',12,15,(select price from book where id_book=15),1), 
+('051122-7',12,18,(select price from book where id_book=18),1),
+('051122-8',13,15,(select price from book where id_book=15),1),
+('061122-1',14,19,(select price from book where id_book=19),1),
+('061122-2',15,18,(select price from book where id_book=18),1), 
+('061122-2',15,19,(select price from book where id_book=19),3), 
+('061122-2',15,20,(select price from book where id_book=20),1), 
+('061122-2',15,21,(select price from book where id_book=21),1),
+('061122-3',16,11,(select price from book where id_book=11),1), 
+('061122-3',16,7,(select price from book where id_book=7),1), 
+('061122-3',16,8,(select price from book where id_book=8),1), 
+('061122-3',16,20,(select price from book where id_book=20),1), 
+('071122-1',17,19,(select price from book where id_book=19),1), 
+('071122-1',17,20,(select price from book where id_book=20),1),
+ ('071122-1',17,22,(select price from book where id_book=22),1), 
+('071122-2',18,14,(select price from book where id_book=14),2), 
+('071122-3',19,10,(select price from book where id_book=10),1), 
+('071122-4',20,17,(select price from book where id_book=17),1), 
+('071122-4',20,19,(select price from book where id_book=19),1), 
+('071122-4',20,22,(select price from book where id_book=22),1);
 
-SELECT * FROM authors;
-SELECT * FROM books;
-SELECT * FROM book_genre;
+SELECT * FROM author;
+SELECT * FROM book;
 SELECT * FROM book_format;
-SELECT * FROM publishers;
+SELECT * FROM book_has_format;
+SELECT * FROM book_genre;
+SELECT * FROM publisher;
 SELECT * FROM additional_information;
-SELECT * FROM shops;
+SELECT * FROM shop;
 SELECT * FROM shop_has_book;
-SELECT * FROM customers;
+SELECT * FROM customer;
 SELECT * FROM orders;
 SELECT * FROM cost_of_order;

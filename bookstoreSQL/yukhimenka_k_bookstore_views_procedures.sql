@@ -15,7 +15,7 @@ WHEN SUM(total_cost) > 60 Then ROUND(SUM(total_cost)*0.9,2)
 ELSE ROUND(SUM(total_cost)*1,2)
 END) AS sum_with_discount
 FROM cost_of_order cod
-JOIN customers c
+JOIN customer c
 ON c.id_customer=cod.customer_id
 GROUP BY number_order;
 
@@ -38,25 +38,24 @@ EXPLAIN
 SELECT b.title, a.first_name, a.last_name, 
 bg.genre, p.pub_house, b.ISBN_13, b.year_of_issue, b.price 
 FROM additional_information ai
-JOIN books b
+JOIN book b
 ON ai.book_id=b.id_book
 JOIN book_genre bg
 ON ai.genre_id=bg.id_genre
-JOIN publishers p
+JOIN publisher p
 ON ai.publish_id=p.id_publish
-JOIN book_format bf
-ON ai.format_id=bf.id_format
-JOIN authors a
+JOIN author a
 ON b.author_id=a.id_author
 WHERE b.title='Moby-Dick';
+
 
 EXPLAIN
 SELECT b.title, a.first_name, a.last_name, sh.shop_address, sh.shop_phone
 FROM shop_has_book shb
-JOIN books b
+JOIN book b
 ON shb.book_id=b.id_book
-JOIN authors a
+JOIN author a
 ON b.author_id=a.id_author
-JOIN shops sh
+JOIN shop sh
 ON shb.shop_id=sh.id_shop
 WHERE a.last_name='Fitzgerald';
