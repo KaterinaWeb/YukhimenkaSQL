@@ -140,27 +140,27 @@ INSERT INTO shop_has_book(book_id, shop_id) VALUES
 (13, 4), (14, 9), (14, 10), (15, 1), (15, 6), (15, 7), (16, NULL), (17, NULL), (18, 2), (18, 3), (18, 5), 
 (19, 9), (19, 8), (20, 16), (21, 1), (21, 4), (21, 5), (21, 6), (22, 8), (22, 10);
 
-INSERT INTO customer(first_name, last_name, c_phone, c_address) VALUES 
-('Deborah', 'Nabokova', '+375295894411', 'Minsk, Turovskogo 18a, 128'),
-('Gabriel', 'Fitch', '80295564123', 'Soligorsk, Stroiteley 31, 96'),
-('Sharon', 'Grin', '(33)555-17-18', 'Smorgon, Yubileynaya 55, 49'),
-('Adam', 'Wooles', NULL, 'Smorgon, per.Kutuzova 15'),
-('Leo', 'Andrewson', '+37533 5891622', 'Minsk, pl.Vaneeva 34, 78'),
-('Andrew', 'Tchain', '80255556644', 'Sluck, Gagarina 20A, 124'),
-('Anton', 'Cvetov', '8(029)7894563', NULL),
-('Martin', 'Elton', '29-3337895', 'Starue Dorogi, Moskovskaya 43, 96'),
-('Herman', 'Michmen', '1234563', 'Molodechno, Stroiteley 17A, 23'),
-('Nicole', 'Dipson', NULL, NULL),
-('Roxie', 'Dibltsten', '37529 8884512', NULL),
-('Jane', 'Mayers', '+37529 5671243', 'Soligorsk, bul.Shahterov 15B, 56'),
-('Wil', 'Smith', '+375(33)632-12-45', 'Cherven, Leninskaya 5'),
-('Lora', 'Horn', '(29)1236384', 'Molodechno, Sovetskaya 31, 176'),
-('Susan', 'Palmery', NULL, 'Minsk, Rozu Luksemburg 12, 59'),
-('Jerry', 'Alabay', '8044-5871760', 'Smolevichi, 50 let Oktjabrya 4, 2'),
-('Lewis', 'Donray', '80447451235', NULL),
-('Ellie', 'Saming', '5671238', 'Luban, bul.Shevchenko 4, 81'),
-('Florencer', 'Leusen', '025-1557496', 'Minsk, Ukrainoslavskaya 2, 15'),
-('Jonathan', 'Pray', NULL, 'Borisov, Bukova 16, 87');
+INSERT INTO customer VALUES 
+(1, 'Deborah', 'Nabokova', '+375295894411', 'Minsk, Turovskogo 18a, 128'),
+(2, 'Gabriel', 'Fitch', '80295564123', 'Soligorsk, Stroiteley 31, 96'),
+(3, 'Sharon', 'Grin', '(33)555-17-18', 'Smorgon, Yubileynaya 55, 49'),
+(4, 'Adam', 'Wooles', NULL, 'Smorgon, per.Kutuzova 15'),
+(5, 'Leo', 'Andrewson', '+37533 5891622', 'Minsk, pl.Vaneeva 34, 78'),
+(6, 'Andrew', 'Tchain', '80255556644', 'Sluck, Gagarina 20A, 124'),
+(7, 'Anton', 'Cvetov', '8(029)7894563', NULL),
+(8, 'Martin', 'Elton', '29-3337895', 'Starue Dorogi, Moskovskaya 43, 96'),
+(9, 'Herman', 'Michmen', '1234563', 'Molodechno, Stroiteley 17A, 23'),
+(10, 'Nicole', 'Dipson', NULL, NULL),
+(11, 'Roxie', 'Dibltsten', '37529 8884512', NULL),
+(12, 'Jane', 'Mayers', '+37529 5671243', 'Soligorsk, bul.Shahterov 15B, 56'),
+(13, 'Wil', 'Smith', '+375(33)632-12-45', 'Cherven, Leninskaya 5'),
+(14, 'Lora', 'Horn', '(29)1236384', 'Molodechno, Sovetskaya 31, 176'),
+(15, 'Susan', 'Palmery', NULL, 'Minsk, Rozu Luksemburg 12, 59'),
+(16, 'Jerry', 'Alabay', '8044-5871760', 'Smolevichi, 50 let Oktjabrya 4, 2'),
+(17, 'Lewis', 'Donray', '80447451235', NULL),
+(18, 'Ellie', 'Saming', '5671238', 'Luban, bul.Shevchenko 4, 81'),
+(19, 'Florencer', 'Leusen', '025-1557496', 'Minsk, Ukrainoslavskaya 2, 15'),
+(20, 'Jonathan', 'Pray', NULL, 'Borisov, Bukova 16, 87');
 
 /* !!! Последний шанс добавить триггеры, дальше БД работать правильно не будут.
  !!!! перед вставкой данных нужно запустить триггеры `orders_AFTER_INSERT` и `orders_BEFORE_DELETE`,
