@@ -95,24 +95,3 @@ total_cost DEC(10,2) NOT NULL,
 FOREIGN KEY (customer_id) REFERENCES customer(id_customer),
 FOREIGN KEY (order_id) REFERENCES orders(id_order));
 
-DELIMITER $$
-CREATE TRIGGER `orders_AFTER_INSERT` 
-AFTER INSERT ON `orders` 
-FOR EACH ROW 
-BEGIN
-INSERT INTO cost_of_order(order_id, number_order, customer_id, 
-amount_of_books, total_cost)
-VALUES
-(NEW.id_order, NEW.order_number, NEW.customer_id, NEW.amount_of_books, 
-NEW.price_of_book*NEW.amount_of_books); 
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE TRIGGER `orders_BEFORE_DELETE` 
-BEFORE DELETE ON `orders` 
-FOR EACH ROW 
-BEGIN
-DELETE FROM cost_of_order WHERE order_id = OLD.id_order;
-END$$
-DELIMITER ;

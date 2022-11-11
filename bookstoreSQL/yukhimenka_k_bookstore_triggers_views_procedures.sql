@@ -1,4 +1,26 @@
 
+DELIMITER $$
+CREATE TRIGGER `orders_AFTER_INSERT` 
+AFTER INSERT ON `orders` 
+FOR EACH ROW 
+BEGIN
+INSERT INTO cost_of_order(order_id, number_order, customer_id, 
+amount_of_books, total_cost)
+VALUES
+(NEW.id_order, NEW.order_number, NEW.customer_id, NEW.amount_of_books, 
+NEW.price_of_book*NEW.amount_of_books); 
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `orders_BEFORE_DELETE` 
+BEFORE DELETE ON `orders` 
+FOR EACH ROW 
+BEGIN
+DELETE FROM cost_of_order WHERE order_id = OLD.id_order;
+END$$
+DELIMITER ;
+
 CREATE VIEW total_sum AS
 SELECT number_order, CONCAT(first_name, ' ', last_name) AS customer_name, 
 SUM(amount_of_books) AS total_books_number, SUM(total_cost) AS total_sum, 

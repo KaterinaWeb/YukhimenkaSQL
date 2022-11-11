@@ -1,54 +1,59 @@
-INSERT INTO author (first_name, last_name) VALUES 
-('Vladimir', 'Nabokov'),
-('F.Scott', 'Fitzgerald'),
-('Gabriel', 'Garcia Marquez'),
-('Virginia', 'Woolf'),
-('Leo', 'Tolstoy'),
-('Mark', 'Twain'),
-('Anton', 'Chekhov'),
-('George', 'Eliot'),
-('Herman', 'Melville'),
-('Charles', 'Dickens'),
-('Fyodor', 'Dostoevsky'),
-('Jane', 'Austen'),
-('William', 'Shakespeare'),
-('Ernest', 'Hemingway'),
-('Miguel', 'de Cervantes'),
-('Dante', 'Alighieri'),
-('Lewis', 'Carroll'),
-('George', 'Orwell'),
-('Harper', 'Lee'),
-('Jonathan', 'Swift');
+/* !!!! перед вставкой данных нужно запустить триггеры `orders_AFTER_INSERT` и `orders_BEFORE_DELETE`,
+ которые находятся в yukhimenka_k_bookstore_triggers_views_procedures.sql!!!!
+ !!!!before inserting data, you need to run the triggers `orders_AFTER_INSERT` and `orders_BEFORE_DELETE`,
+ that are in yukhimenka_k_bookstore_triggers_views_procedures.sql!!!!*/
 
-INSERT INTO book (title, author_id, ISBN_13, year_of_issue, price) VALUES
-('Lolita', 1, '978-0679723165', 1989, 5.49),
-('The Great Gatsby', 2, '978-0743273565',2004, 5.22),
-('One Hundred Years of Solitude', 3, '978-0060531041', 2006, 16.83),
-('To The Lighthouse', 4, '978-0156907392', 1989, 10.28),
-('Anna Karenina', 5, '978-5519618038', 2004, 8.23),
-('War and Peace', 5, '978-1400079988', 2008, 4.95),
-('The Adventures of Huckleberry Finn', 6, ' 978-1481819046', 2012, 11.11),
-('The stories', 7, '978-0553381009', 2000, 3.59),
-('Middlemarch', 8, '979-8714429255', 2021, 5),
-('Moby-Dick', 9, '978-1503280786', 2018, 5.98),
-('Great Expectations', 10, '978-1503275188', 2020, 8.09),
-('Crime and Punishment', 11, '978-0486415871', 2001, 11.5),
-('Pride and Prejudice', 12, '978-1503290563', 2021, 8.42),
-('Hamlet', 13, '978-0743477123', 1992, 6.7),
-('Romeo and Juliet', 13, '978-0671722852', 2004, 5.7),
-('The Old Man and The Sea', 14, '978-0684801223', 1995, 17.01),
-('Don Quixote', 15, '978-0142437230', 2003, 4.1),
-('The Divine Comedy', 16, '978-0451208637', 2003, 6.8),
-('Alice''s Adventures in Wonderland', 17, '978-0486275437', 1993, 10.46),
-('Nineteen Eighty Four', 18, '978-0451524935', 1961, 7.92),
-('To Kill a Mockingbird', 19, '978-0446310789', 1988, 12.01),
-('Gulliver''s Travels', 20, '978-0486292731', 1996, 2.95);
+INSERT INTO author VALUES 
+(1, 'Vladimir', 'Nabokov'),
+(2, 'F.Scott', 'Fitzgerald'),
+(3, 'Gabriel', 'Garcia Marquez'),
+(4, 'Virginia', 'Woolf'),
+(5, 'Leo', 'Tolstoy'),
+(6, 'Mark', 'Twain'),
+(7, 'Anton', 'Chekhov'),
+(8, 'George', 'Eliot'),
+(9, 'Herman', 'Melville'),
+(10, 'Charles', 'Dickens'),
+(11, 'Fyodor', 'Dostoevsky'),
+(12, 'Jane', 'Austen'),
+(13, 'William', 'Shakespeare'),
+(14, 'Ernest', 'Hemingway'),
+(15, 'Miguel', 'de Cervantes'),
+(16, 'Dante', 'Alighieri'),
+(17, 'Lewis', 'Carroll'),
+(18, 'George', 'Orwell'),
+(19, 'Harper', 'Lee'),
+(20, 'Jonathan', 'Swift');
 
-INSERT INTO book_format(b_format) VALUES
-('hardcover'),
-('paperback'),
-('audiobook'),
-('Ebook');
+INSERT INTO book VALUES
+(1, 'Lolita', 1, '978-0679723165', 1989, 5.49),
+(2, 'The Great Gatsby', 2, '978-0743273565',2004, 5.22),
+(3, 'One Hundred Years of Solitude', 3, '978-0060531041', 2006, 16.83),
+(4, 'To The Lighthouse', 4, '978-0156907392', 1989, 10.28),
+(5, 'Anna Karenina', 5, '978-5519618038', 2004, 8.23),
+(6, 'War and Peace', 5, '978-1400079988', 2008, 4.95),
+(7, 'The Adventures of Huckleberry Finn', 6, ' 978-1481819046', 2012, 11.11),
+(8, 'The stories', 7, '978-0553381009', 2000, 3.59),
+(9, 'Middlemarch', 8, '979-8714429255', 2021, 5),
+(10, 'Moby-Dick', 9, '978-1503280786', 2018, 5.98),
+(11, 'Great Expectations', 10, '978-1503275188', 2020, 8.09),
+(12, 'Crime and Punishment', 11, '978-0486415871', 2001, 11.5),
+(13, 'Pride and Prejudice', 12, '978-1503290563', 2021, 8.42),
+(14, 'Hamlet', 13, '978-0743477123', 1992, 6.7),
+(15, 'Romeo and Juliet', 13, '978-0671722852', 2004, 5.7),
+(16, 'The Old Man and The Sea', 14, '978-0684801223', 1995, 17.01),
+(17, 'Don Quixote', 15, '978-0142437230', 2003, 4.1),
+(18, 'The Divine Comedy', 16, '978-0451208637', 2003, 6.8),
+(19, 'Alice''s Adventures in Wonderland', 17, '978-0486275437', 1993, 10.46),
+(20, 'Nineteen Eighty Four', 18, '978-0451524935', 1961, 7.92),
+(21, 'To Kill a Mockingbird', 19, '978-0446310789', 1988, 12.01),
+(22, 'Gulliver''s Travels', 20, '978-0486292731', 1996, 2.95);
+
+INSERT INTO book_format VALUES
+(1, 'hardcover'),
+(2, 'paperback'),
+(3, 'audiobook'),
+(4, 'Ebook');
 
 INSERT INTO book_has_format(book_id, format_id) VALUES
 (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 1), (5, 1), (6, 1), (6, 3), (6, 4), (6, 2), (7, 2), (7, 3),
@@ -56,35 +61,35 @@ INSERT INTO book_has_format(book_id, format_id) VALUES
 (13, 2), (14, 2), (14, 1), (15, 2), (15, 1), (15, 4), (16, 1), (17, 2), (18, 2), (18, 3), (18, 1), 
 (19, 1), (19, 3), (20, 1), (21, 1), (21, 2), (21, 3), (21, 4), (22, 2), (22, 4);
 
-INSERT INTO book_genre(genre) VALUES
-('Literary Fiction'),
-('Tragedy'),
-('Thriller'),
-('Horror'),
-('Historical'),
-('Romance'),
-('Adventure'),
-('Bildungsroman'),
-('Speculative Fiction'),
-('Science Fiction'),
-('Fantasy'),
-('Dystopian'),
-('Magical Realism'),
-('Realist Literature');
+INSERT INTO book_genre VALUES
+(1, 'Literary Fiction'),
+(2, 'Tragedy'),
+(3, 'Thriller'),
+(4, 'Horror'),
+(5, 'Historical'),
+(6, 'Romance'),
+(7, 'Adventure'),
+(8, 'Bildungsroman'),
+(9, 'Speculative Fiction'),
+(10, 'Science Fiction'),
+(11, 'Fantasy'),
+(12, 'Dystopian'),
+(13, 'Magical Realism'),
+(14, 'Realist Literature');
 
-INSERT INTO publisher(pub_house, pub_address, pub_phone, contact_person) VALUES
-('Harper Perennial Modern Classics', '195 Broadway, NY 10007', '+1 212-746-5400', 'Windy'),
-('Scribner', '154 South Victory Blvd. Burbank, CA', '+1 212-312-5000', 'Starlette Pitt'),
-('Knopf Doubleday Publishing Group', '1745 Broadway, New York, 10019', NULL, NULL),
-('Penguin Classics', '20 Vauxhall Bridge Rd, London', NULL, NULL),
-('CreateSpace Independent Publishing Platform', 'Scotts Valley, California , US', '+1 212-423-6262', 'Tokyo Man'),
-('Modern Library', '1745 Broadway, 11th Floor NY 10019', '+1 212-567-4000', 'Tenysi River'),
-('Independently published', NULL, '+1 212-746-5454', 'Pluto'),
-('Dover Publications', '1325 Franklin Ave, Garden City, NY', '+1 720-848-0000', NULL),
-('Simon & Schuster', '1230 Avenue of the Americas, NY, 10020-1513, USA', NULL, NULL),
-('Berkley', NULL, '+1 203-384-3000', 'Brayan Dash'),
-('Signet Classic', NULL, '+1 646-929-7800', 'Abrielle'),
-('Grand Central Publishing', '1290 Avenue of the Americas New York, NY 10104', '+1 626-397-5000', 'Dara Smith');
+INSERT INTO publisher VALUES
+(1, 'Harper Perennial Modern Classics', '195 Broadway, NY 10007', '+1 212-746-5400', 'Windy'),
+(2, 'Scribner', '154 South Victory Blvd. Burbank, CA', '+1 212-312-5000', 'Starlette Pitt'),
+(3, 'Knopf Doubleday Publishing Group', '1745 Broadway, New York, 10019', NULL, NULL),
+(4, 'Penguin Classics', '20 Vauxhall Bridge Rd, London', NULL, NULL),
+(5, 'CreateSpace Independent Publishing Platform', 'Scotts Valley, California , US', '+1 212-423-6262', 'Tokyo Man'),
+(6, 'Modern Library', '1745 Broadway, 11th Floor NY 10019', '+1 212-567-4000', 'Tenysi River'),
+(7, 'Independently published', NULL, '+1 212-746-5454', 'Pluto'),
+(8, 'Dover Publications', '1325 Franklin Ave, Garden City, NY', '+1 720-848-0000', NULL),
+(9, 'Simon & Schuster', '1230 Avenue of the Americas, NY, 10020-1513, USA', NULL, NULL),
+(10, 'Berkley', NULL, '+1 203-384-3000', 'Brayan Dash'),
+(11, 'Signet Classic', NULL, '+1 646-929-7800', 'Abrielle'),
+(12, 'Grand Central Publishing', '1290 Avenue of the Americas New York, NY 10104', '+1 626-397-5000', 'Dara Smith');
 
 INSERT INTO additional_information(book_id, genre_id, publish_id, page_num, staff_comment)
 VALUES
@@ -156,6 +161,13 @@ INSERT INTO customer(first_name, last_name, c_phone, c_address) VALUES
 ('Ellie', 'Saming', '5671238', 'Luban, bul.Shevchenko 4, 81'),
 ('Florencer', 'Leusen', '025-1557496', 'Minsk, Ukrainoslavskaya 2, 15'),
 ('Jonathan', 'Pray', NULL, 'Borisov, Bukova 16, 87');
+
+/* !!! Последний шанс добавить триггеры, дальше БД работать правильно не будут.
+ !!!! перед вставкой данных нужно запустить триггеры `orders_AFTER_INSERT` и `orders_BEFORE_DELETE`,
+ которые находятся в yukhimenka_k_bookstore_triggers_views_procedures.sql!!!!
+ !!! Last chance to add triggers, the database will no longer work correctly.
+ !!!! before inserting data, you need to run the triggers `orders_AFTER_INSERT` and `orders_BEFORE_DELETE`,
+ that are in yukhimenka_k_bookstore_triggers_views_procedures.sql!!!!*/
 
 INSERT INTO orders (order_number, customer_id, book_id, price_of_book,
  amount_of_books) VALUES 
