@@ -70,8 +70,8 @@ CREATE TABLE customer(
 id_customer INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 first_name VARCHAR(30) NOT NULL,
 last_name VARCHAR(50),
-c_address VARCHAR(100),
-c_phone VARCHAR(20) UNIQUE);
+c_phone VARCHAR(20) UNIQUE,
+c_address VARCHAR(100));
 
 CREATE TABLE orders(
 id_order INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
